@@ -1,0 +1,107 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Junran's Kanban Board</title>
+  <meta name="author" content="Junran Shi">
+  <meta name="description" content="This is a Kanban board Junran designed for her CS162 assignment. Start keeping track of your to-dos with this tool!">
+  <link rel=stylesheet type=text/css href="../static/style.css">
+  <!-- use bootstrap for responsiveness -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="bg">
+
+    <!-- top section: header and new task -->
+
+    <div class="row">
+      <div class="col-md-8 container">
+        <img src="{{url_for('static', filename='emoji.svg')}}">
+        <h1>My Kanban Board</h1>
+        <p class="sub-header">Use this board to keep track of your work. Remember to take breaks after a long task!</p>
+      </div>
+
+      <!-- new task -->
+      <!-- form to get new entries -->
+
+      <div class="col-md-4 new-task-form container">
+        <div class="form-items">
+          <form class="form" action="/add" method="post">
+            <input type="text" name="title" placeholder="Task Title">
+            <p></p>
+            <input type="text" name="description" placeholder="Description">
+            <p></p>
+            <button class="add-new-task-button" type="submit" name="add-new-task-button">Add New Task</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- board -->
+
+    <div class="to-do-container container">
+
+      <div class="status">
+        <div class="status-label to-do-label">
+          <p class="label-text">To-Do</p>
+        </div>
+
+        <!-- kanban card -->
+        <!-- in each column, iterate through each item in the list and display -->
+        {% for todo in todo_items %}
+        <div class="kanban-card">
+          <h4 class="card-name">{{ todo.title }}</h4>
+          <p class="card-description">{{ todo.description }}</p>
+          <!-- the close button deletes the item -->
+          <a class="close" href="/delete/{{ todo.id }}">&times;</a>
+          <div class="move-buttons">
+            <a class="label-text move" href="/updatedoing/{{ todo.id }}"><em>[Doing]</em></a>
+            <a class="label-text move" href="/updatedone/{{ todo.id }}"><em>[Done]</em></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="status">
+        <div class="status-label doing-label">
+          <p class="label-text">Doing</p>
+        </div>
+
+        {% for todo in doing_items %}
+        <div class="kanban-card">
+          <h4 class="card-name">{{ todo.title }}</h4>
+          <p class="card-description">{{ todo.description }}</p>
+          <a class="close" href="/delete/{{ todo.id }}">&times;</a>
+          <div class="move-buttons">
+            <a class="label-text move" href="/updatetodo/{{ todo.id }}"><em>[To-Do]</em></a>
+            <a class="label-text move" href="/updatedone/{{ todo.id }}"><em>[Done]</em></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="status">
+        <div class="status-label done-label">
+          <p class="label-text">Done</p>
+        </div>
+
+        {% for todo in done_items %}
+        <div class="kanban-card">
+          <h4 class="card-name">{{ todo.title }}</h4>
+          <p class="card-description">{{ todo.description }}</p>
+          <a class="close" href="/delete/{{ todo.id }}">&times;</a>
+          <div class="move-buttons">
+            <a class="label-text move" href="/updatetodo/{{ todo.id }}"><em>[To-Do]</em></a>
+            <a class="label-text move" href="/updatedoing/{{ todo.id }}"><em>[Doing]</em></a>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
