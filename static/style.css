@@ -1,0 +1,149 @@
+body {
+  font-family: Helvetica;
+  padding: 7% 15% 7% 15%;
+}
+
+h1 {
+  padding-top: 10px;
+  font-family: Helvetica-Bold;
+}
+
+.move {
+  font-size: 14px;
+  border-radius: 20px;
+}
+
+.close, .move {
+  text-decoration: none;
+}
+
+/* green background */
+.bg {
+  background: #E8EFEB;
+  box-shadow: 6px 6px 0 #FFDCE0;
+  border-radius: 12px;
+  padding: 15px 20px 15px 20px;
+}
+
+/* header */
+
+.container {
+  padding: 12px;
+}
+
+.sub-header {
+  color: darkgray;
+  width: 400px;
+}
+
+/* new task form */
+.new-task-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  background: white;
+  border: 1px solid #DDDDDD;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 4px 12px;
+}
+
+.add-new-task-button {
+  color: white;
+  background: #828282;
+  border-radius: 20px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.08));
+  border: none;
+  text-align: center;
+  padding: 4px 16px;
+  font-size: 16px;
+}
+
+/* to-do board */
+
+.to-do-container {
+  position: static;
+  background: #F8F8F8;
+  border-radius: 12px;
+  display: flex
+}
+
+/* board column */
+
+.status {
+  width: 33.33%;
+  position: relative;
+  padding: 0.5rem 0.5rem 0.5rem;
+}
+
+.status-label {
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.to-do-label {
+    background: #E1E4E8;
+}
+
+.doing-label {
+  background: #F0E7F6;
+}
+
+.done-label {
+  background: #FFDCE0;
+}
+
+.label-text {
+  color: #4D4D4D;
+  padding: 0.2rem 0.6rem;
+  margin: 0;
+}
+
+/* to-do card */
+
+.kanban-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #DDDDDD;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.kanban-card .close {
+  position: absolute;
+  right: 1rem;
+  top: 0.3rem;
+  font-size: 1.7rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #343444;
+}
+
+.move:hover {
+  color: #343444;
+  background-color: DDDDDD;
+}
+
+.card-name {
+  font-size: 18px;
+  color: #212121;
+  font-family: Helvetica-Bold;
+}
+
+.card-description {
+  color: #5A5A65;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+}
